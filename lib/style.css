@@ -1,0 +1,17 @@
+h1 {
+    page-break-before:always;
+}
+h1.toc {
+    page-break-before: avoid;
+}
+.break-page {
+    page-break-after:always;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+}
+.toc ul ul {
+    padding: 0 0 0 20px;
+}
