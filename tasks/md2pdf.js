@@ -1,50 +1,71 @@
-/*
- * grunt-md2pdf
- * https://github.com/ben/tmp
- *
- * Copyright (c) 2014 Ben Gerrissen
- * Licensed under the MIT license.
- */
-
 'use strict';
 
-module.exports = function(grunt) {
+var concat = require('./../lib/concat');
+var marked = require('marked');
+var createToc = require('marked-toc');
+var pdf = require('html-to-pdf');
+var path = require('path');
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+module.exports = function (grunt) {
+    
+    var template = '<html><head><style>{{css}}</style></head><body>{{content}}</body></html>';
+    var templateToc = '<h1 class="toc">{{toc-title}}</h1><div class="toc">{{toc}}</div>';
 
-  grunt.registerMultiTask('md2pdf', 'Converts markdown to pdf', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
+
+    grunt.registerMultiTask('md2pdf', 'Converts markdown to pdf', function () {
+
+        var options = this.options({
+            toc: false,
+            tocDepth: null,
+            tocTitle: 'Table of contents',
+            stylesheet: __dirname + '/../lib/style.css'
+        });
+        
+        var done = this.async();
+        var total = this.files.length;
+        var resolved = 0;
+
+        // Iterate over all specified file groups.
+        this.files.forEach(function (filePath) {
+            
+            var markdown, toc = '', html = '', css = '';
+
+            markdown = concat(filePath.src);
+            
+            if ( options.stylesheet ) {
+                css = grunt.file.read( options.stylesheet  )
+            }
+            
+            if ( options.toc ) {
+                toc = createToc(markdown, {
+                    maxDepth: options.tocDepth,
+                    firsth1: true
+                });
+                toc = templateToc
+                    .replace('{{toc-title}}', options.tocTitle)
+                    .replace('{{toc}}',marked(toc));
+            }
+            html = template
+                .replace('{{css}}',css)
+                .replace('{{content}}', toc.concat(marked(markdown)));    
+            
+            grunt.file.mkdir(path.dirname(filePath.dest));
+            
+            // todo: replace with html-pdf module once phantomjs anchor link bug is fixed.
+            // html-to-pdf has an external dependency on java.
+            pdf.convertHTMLString ( html, filePath.dest, function( error ){
+                if ( error ) {
+                    grunt.log.warn(error);
+                } else {
+                    grunt.log.ok('Generated ' + filePath.dest);
+                }
+                resolved++;
+                if ( resolved === total ) {
+                    done();
+                }
+            });
+            
+        });
     });
-
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
-
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
-  });
 
 };
