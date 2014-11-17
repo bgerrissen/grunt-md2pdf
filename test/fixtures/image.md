@@ -1,0 +1,1 @@
+![cookie monster](C:\projects\grunt-plugins\grunt-md2pdf\test\fixtures\cm.jpg)

@@ -15,15 +15,25 @@ module.exports = function (grunt) {
 
         // Configuration to be run (and then tested).
         md2pdf: {
-            make: {
+            base: {
                 options: {
                     toc: true,
                     tocDepth: 1
                 },
-                'tmp/c.pdf': [
-                    'test/fixtures/a.md',
-                    'test/fixtures/b.md'
+                files: [
+                    {
+                        src: [
+                            'test/fixtures/a.md',
+                            'test/fixtures/b.md'
+                        ],
+                        dest: 'tmp/c.pdf'
+                    }
                 ]
+            },
+            image: {
+                files: {
+                    'tmp/image.pdf': 'test/fixtures/image.md'
+                }
             }
         },
 

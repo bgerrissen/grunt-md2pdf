@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 
         // Iterate over all specified file groups.
         this.files.forEach(function (filePath) {
-            
+
             grunt.log.writeln('Converting markdown to html...');
             var html = md2html(filePath.src,options);
 
