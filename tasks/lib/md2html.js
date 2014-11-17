@@ -20,7 +20,7 @@ module.exports = function( src, options ){
 
     if ( options && options.toc ) {
         toc = createToc(markdown, {
-            maxDepth: options.tocDepth || 0,
+            maxDepth: options.tocDepth || null,
             firsth1: true
         });
         toc = templateToc
