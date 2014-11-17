@@ -7,6 +7,9 @@ module.exports = function (grunt) {
 
         // Before generating any new files, remove any previously-created files.
         clean: {
+            options:{
+                force:true
+            },
             tests: ['tmp']
         },
 
@@ -17,12 +20,15 @@ module.exports = function (grunt) {
                     toc: true,
                     tocDepth: 1
                 },
-                files: {
-                    'tmp/c.pdf': [
-                    'test/fixtures/a.md',
-                    'test/fixtures/b.md'
+                files: [
+                    {
+                        src: [
+                            'test/fixtures/a.md',
+                            'test/fixtures/b.md'
+                        ],
+                        dest: 'tmp/c.pdf'
+                    }
                 ]
-                }
             }
         },
 
@@ -42,7 +48,7 @@ module.exports = function (grunt) {
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'md2pdf']);
+    grunt.registerTask('test', ['clean', 'md2pdf', 'nodeunit','clean']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);
