@@ -62,7 +62,7 @@ Title to display above table of contents.
 Type: `String`
 Default value: PATH_TO_PLUGIN_STYLESHEET
 
-CSS styling, defaults to a file included in the plugin that breaks <h1> tags to a new page in the PDF.
+CSS styling, defaults to a file included in the plugin that breaks &lt;h1&gt; tags to a new page in the PDF.
 
 
 ### Usage Examples
