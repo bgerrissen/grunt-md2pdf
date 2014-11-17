@@ -122,13 +122,11 @@ h1.toc {
 
 ## Important notes:
 
-- Images are currently not supported.
 - html-to-pdf makes use of a java library, that means you need java installed to use this plugin.
 
 ## Roadmap:
 
 - 0.2.0 Title page
-- 0.3.0 Image support (possible switch to phantomjs, but anchors are currently broken in phantomjs)
 
 ## Dependencies:
 

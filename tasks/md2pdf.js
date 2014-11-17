@@ -26,10 +26,11 @@ module.exports = function (grunt) {
             grunt.log.writeln('Converting markdown to html...');
             var html = md2html(filePath.src,options);
 
+
             grunt.file.mkdir(path.dirname(filePath.dest));
 
             grunt.log.writeln('Converting html to pdf...');
-            pdf.convertHTMLString ( html, filePath.dest, function( error ){
+            pdf.convertHTMLString( html, filePath.dest, function( error ){
                 if ( error ) {
                     grunt.log.warn(error);
                 } else {
