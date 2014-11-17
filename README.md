@@ -96,6 +96,14 @@ grunt.initConfig({
 });
 ```
 
+## Dependencies:
+
+Note: html-to-pdf makes use of a java library, that means you need java installed to use this plugin.
+
+- [html-to-pdf](https://github.com/ChaosEvoker/html-to-pdf)
+- [marked](https://github.com/chjj/marked)
+- [marked-toc](https://github.com/jonschlinkert/marked-toc)
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 Add unit tests for any new or changed functionality.
