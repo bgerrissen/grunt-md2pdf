@@ -1,6 +1,6 @@
 {
   "name": "grunt-md2pdf",
-  "description": "Converts markdown to pdf",
+  "description": "Converts markdown file(s) to pdf",
   "version": "0.1.0",
   "homepage": "https://github.com/bgerrissen/grunt-md2pdf",
   "author": {
@@ -36,7 +36,9 @@
     "grunt": "^0.4.5"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "markdown",
+      "marked", "marked-toc", "html-to-pdf", "pdf", "convert"
   ],
   "dependencies": {
     "html-to-pdf": "^0.1.11",

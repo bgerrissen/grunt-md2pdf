@@ -8,7 +8,7 @@ This plugin requires Grunt `~0.4.5`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-md2pdf --save-dev
+npm install grunt-md2pdf
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
@@ -94,6 +94,30 @@ grunt.initConfig({
     }
   },
 });
+```
+
+## CSS
+
+The default styling included is quite simple:
+
+```css
+h1 {
+    page-break-before:always;
+}
+h1.toc {
+    page-break-before: avoid;
+}
+.break-page {
+    page-break-after:always;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+}
+.toc ul ul {
+    padding: 0 0 0 20px;
+}
 ```
 
 ## Dependencies:
