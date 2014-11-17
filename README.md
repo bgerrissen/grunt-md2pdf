@@ -1,6 +1,6 @@
 # grunt-md2pdf
 
-> Converts markdown to pdf
+> A simple plugin to converts markdown file(s) to pdf.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
