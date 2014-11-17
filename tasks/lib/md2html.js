@@ -4,6 +4,7 @@ var grunt = require('grunt');
 var createToc = require('marked-toc');
 var marked = require('marked');
 var path = require('path');
+var sizeOf = require('image-size');
 
 module.exports = function( src, options ){
 
@@ -13,7 +14,6 @@ module.exports = function( src, options ){
     var markedOptions = {
         renderer: renderer
     };
-
 
     var template = '<html><head><style>{{css}}</style></head><body>{{content}}</body></html>';
     var templateToc = '<h1 class="toc">{{toc-title}}</h1><div class="toc">{{toc}}</div>';
@@ -26,7 +26,8 @@ module.exports = function( src, options ){
 
         renderer.image = function( href, title, text){
             href = path.join(path.dirname(filepath),href);
-            return '<img src="'+href+'" alt="'+text+'" title="'+title+'" />';
+            var dim = sizeOf(href);
+            return '<img src="'+href+'" alt="'+text+'" title="'+title+'" width="'+dim.width+'" height="'+dim.height+'" />';
         };
 
         var md = grunt.file.read(filepath);
