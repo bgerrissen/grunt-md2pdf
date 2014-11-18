@@ -150,4 +150,9 @@ Add unit tests for any new or changed functionality.
 Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+- 0.3.0 Title page support
+- 0.2.3
+- 0.2.2
+- 0.2.1
+- 0.2.0 Image support
 - 0.1.0
