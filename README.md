@@ -136,7 +136,8 @@ h1.toc, .title-page h1 {
 
 ## Roadmap:
 
-- 0.2.0 Title page
+- 0.4.0 Code refactoring, better error management and prevent silent IO fails.
+- 0.5.0 Replace html-to-pdf for a working PhantomJS solution (currently anchor links are broken in PhantomJS pdf renderer).
 
 ## Dependencies:
 
