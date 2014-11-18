@@ -45,6 +45,23 @@ exports.md2pdf = {
 
     },
 
+    md2htmlWithTitlePage: function(test){
+
+        test.expect(1);
+
+        var options = {
+            titlePage: 'test/fixtures/titlePage.md'
+        };
+
+        var html = grunt.util.normalizelf(md2html('test/fixtures/a.md', options));
+        var expected = grunt.util.normalizelf(grunt.file.read('test/expected/titlePage.html'));
+
+        test.equals(html,expected,"HTML is exactly the same");
+
+        test.done();
+
+    },
+
     pdfWritten: function (test) {
         test.expect(4);
 

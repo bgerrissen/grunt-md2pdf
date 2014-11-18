@@ -1,10 +1,10 @@
 h1 {
     page-break-before:always;
 }
-h1.toc {
+h1.toc, .title-page h1 {
     page-break-before: avoid;
 }
-.break-page {
+.break-page, .title-page {
     page-break-after:always;
 }
 
@@ -15,3 +15,8 @@ h1.toc {
 .toc ul ul {
     padding: 0 0 0 20px;
 }
+
+.title-page {
+    text-align: center;
+}
+

@@ -27,6 +27,13 @@ module.exports = function (grunt) {
                             'test/fixtures/b.md'
                         ],
                         dest: 'tmp/c.pdf'
+                    },
+                    {
+                        options: {
+                            titlePage: 'test/fixtures/titlePage.md'
+                        },
+                        src: 'test/fixtures/a.md',
+                        dest: 'tmp/with-title-page.pdf'
                     }
                 ]
             },

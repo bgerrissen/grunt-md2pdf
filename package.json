@@ -1,7 +1,7 @@
 {
   "name": "grunt-md2pdf",
   "description": "Converts markdown file(s) to pdf",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "homepage": "https://github.com/bgerrissen/grunt-md2pdf",
   "author": {
     "name": "Ben Gerrissen",

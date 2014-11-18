@@ -13,7 +13,8 @@ module.exports = function (grunt) {
             toc: false,
             tocDepth: null,
             tocTitle: 'Table of contents',
-            stylesheet: __dirname + '/lib/style.css'
+            stylesheet: __dirname + '/lib/style.css',
+            titlePage: null
         });
         
         var done = this.async();
@@ -23,8 +24,14 @@ module.exports = function (grunt) {
         // Iterate over all specified file groups.
         this.files.forEach(function (filePath) {
 
+            var opts = Object.create(options);
+
+            for(var key in filePath.options) {
+                opts[key] = filePath.options[key];
+            }
+
             grunt.log.writeln('Converting markdown to html...');
-            var html = md2html(filePath.src,options);
+            var html = md2html(filePath.src,opts);
 
 
             grunt.file.mkdir(path.dirname(filePath.dest));
