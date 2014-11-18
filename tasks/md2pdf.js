@@ -1,6 +1,5 @@
 'use strict';
 
-
 var pdf = require('html-to-pdf');
 var path = require('path');
 var md2html = require('./lib/md2html');
@@ -26,6 +25,7 @@ module.exports = function (grunt) {
 
             var opts = Object.create(options);
 
+            // three lines is not enough to start using lodash or underscore...
             for(var key in filePath.options) {
                 opts[key] = filePath.options[key];
             }
@@ -43,6 +43,8 @@ module.exports = function (grunt) {
                 } else {
                     grunt.log.ok('Generated ' + path.resolve(filePath.dest) );
                 }
+
+                // promisses smomisses.
                 resolved++;
                 if ( resolved === total ) {
                     done();

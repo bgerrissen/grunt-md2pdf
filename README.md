@@ -64,6 +64,12 @@ Default value: PATH_TO_PLUGIN_STYLESHEET
 
 CSS styling, defaults to a file included in the plugin that breaks `<h1>` tags to a new page in the PDF.
 
+#### options.titlePage
+Type: `String`
+Default value: null
+
+Path to a markdown/html title page. Will be wrapped in a `<div>` with className "title-page".
+
 
 ### Usage Examples
 
@@ -104,10 +110,10 @@ The default styling included is quite simple:
 h1 {
     page-break-before:always;
 }
-h1.toc {
+h1.toc, .title-page h1 {
     page-break-before: avoid;
 }
-.break-page {
+.break-page, .title-page {
     page-break-after:always;
 }
 
@@ -117,6 +123,10 @@ h1.toc {
 }
 .toc ul ul {
     padding: 0 0 0 20px;
+}
+
+.title-page {
+    text-align: center;
 }
 ```
 
