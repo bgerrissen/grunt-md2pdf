@@ -31,7 +31,7 @@ grunt.initConfig({
       },
       'TARGET_DESTINATION.PDF': [
         'FIRST_FILE.MD',
-        'SECOND_FILE.MD''
+        'SECOND_FILE.MD'
       ]
     }
   },
